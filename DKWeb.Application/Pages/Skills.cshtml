@@ -1,0 +1,73 @@
+﻿@page
+@model DKWeb.Application.Pages.SkillsModel
+@{
+	#region	Model instantiations
+	ImageHeadingModel imageHeading = new ImageHeadingModel();
+	ColumnNodeModel columnNode = new ColumnNodeModel();
+	#endregion
+}
+<!--  FRONTEND  -->
+
+<!-- Frontend heading -->
+<partial name="/Pages/Partial/_ImageHeading.cshtml" model="@imageHeading.NewModel("Frontend Web Development", "/images/background/Frontend.png")" />
+
+<!-- Frontend nodes -->
+<div class="flexbox-container flexbox-container-rowed" style="width:100%;">
+	<!-- HTML -->
+	<partial name="/Pages/Partial/_ColumnNode.cshtml" model="@columnNode.NewModel("HTML", "/images/skills/HTML.png", "4+ ys")" />
+	
+	<!-- CSS -->
+	<partial name="/Pages/Partial/_ColumnNode.cshtml" model="@columnNode.NewModel("CSS", "/images/skills/CSS.png", "4+ ys")" />
+	
+	<!-- JS -->
+	<partial name="/Pages/Partial/_ColumnNode.cshtml" model="@columnNode.NewModel("JavaScript", "/images/skills/JS.png", "3+ ys")" />
+	
+	<!-- Bootstrap -->
+	<partial name="/Pages/Partial/_ColumnNode.cshtml" model="@columnNode.NewModel("Bootstrap", "/images/skills/Bootstrap.png", "3+ ys")" />
+</div>
+
+
+<!-- BACKEND -->
+
+
+<!-- Backend heading -->
+<partial name="/Pages/Partial/_ImageHeading.cshtml" model="@imageHeading.NewModel("Backend Web Development", "/images/background/Database.jpg")" />
+
+<!-- Backend nodes -->
+<div class="flexbox-container flexbox-container-rowed" style="width:100%;">
+	<!-- ASP.NET Core -->
+	<partial name="/Pages/Partial/_ColumnNode.cshtml" model="@columnNode.NewModel("ASP.NET Core", "/images/skills/NetCore.png", "1+ ys")" />
+
+	<!-- C# -->
+	<partial name="/Pages/Partial/_ColumnNode.cshtml" model="@columnNode.NewModel("C#", "/images/skills/CSharp.svg", "1.5 ys")" />
+
+	<!-- SQL -->
+	<partial name="/Pages/Partial/_ColumnNode.cshtml" model="@columnNode.NewModel("SQL", "/images/skills/SQL.svg", "3+ ys")" />
+
+	<!-- MSQL -->
+	<partial name="/Pages/Partial/_ColumnNode.cshtml" model="@columnNode.NewModel("Microsoft SQL Server", "/images/skills/MSQL.png", "1+ ys")" />
+
+	<!-- Entity Framework -->
+	<partial name="/Pages/Partial/_ColumnNode.cshtml" model="@columnNode.NewModel("Entity Framework Core", "/images/skills/EntityFramework.png", "1+ ys")" />
+</div>
+
+<!--  DESKTOP  -->
+
+
+<!-- Desktop heading -->
+<partial name="/Pages/Partial/_ImageHeading.cshtml" model="@imageHeading.NewModel("Desktop Development", "/images/background/Desktop.jpg")" />
+
+<!-- Desktop nodes -->
+<div class="flexbox-container flexbox-container-rowed" style="width:100%;">
+	<!-- WPF -->
+	<partial name="/Pages/Partial/_ColumnNode.cshtml" model="@columnNode.NewModel("Microsoft WPF", "/images/skills/WPF.jpg", "1.5 ys")" />
+
+	<!-- XAML -->
+	<partial name="/Pages/Partial/_ColumnNode.cshtml" model="@columnNode.NewModel("XAML", $"/images/skills/XAML.jpeg", "1.5 ys")" />
+
+	<!-- MVVM -->
+	<partial name="/Pages/Partial/_ColumnNode.cshtml" model="@columnNode.NewModel("MVVM Framework", "/images/skills/MVVM.png", "1+ ys")" />
+
+	<!-- Entity Framework -->
+	<partial name="/Pages/Partial/_ColumnNode.cshtml" model="@columnNode.NewModel("Entity Framework Core", "/images/skills/EntityFramework.png", "1+ ys")" />
+</div>

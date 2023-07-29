@@ -1,0 +1,43 @@
+﻿<!-- Partial view creating hoverable dropdown menu -->
+
+@model PageStatementModel
+
+<!-- Large screen -->
+<style>
+    .empty{
+        flex: 0 0 auto;
+        width: 25%;
+    }
+
+    .hooker{
+        flex: 0 0 auto;
+        width: 50%;
+    }
+</style>
+
+<!-- Small screen -->
+<style media="screen and (max-width:480px)">
+    .empty {
+        flex: 0 0 auto;
+        width: 8.33333333%;
+    }
+
+    .hooker {
+        flex: 0 0 auto;
+        width: 83.33333333%;
+    }
+</style>
+
+
+
+
+<!-- Hooker -->
+<div class="page-band-white row" style="width:100%; padding: 30px 0px;">
+    <div class="empty"></div>
+    <div class="hooker">
+        <p class="page-statement">@Model.Question</p>
+        <hr class="hr-main"/>
+        <p class="page-statement">@Model.Prompt</p>
+    </div>
+    <div class="empty"></div>
+</div>

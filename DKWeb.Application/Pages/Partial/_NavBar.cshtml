@@ -1,0 +1,352 @@
+﻿<!-- Any screen -->
+<style>
+
+    #appNavBar{
+        background-color: var(--page-primary);
+        padding: 10px 0px;
+        z-index: 5;
+    }
+
+    /* Setting color */
+    .nav-container-column{
+        background-color: var(--page-primary);
+    }
+
+    .nav-container-row {
+        background-color: var(--page-primary);
+    }
+
+    /* Sticky navbar */
+    .nav-sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+</style>
+
+<!-- Large screen -->
+<style type="text/css" media="screen and (min-width:961px)">
+    #appNavBar {
+        
+    }
+
+    #navbar-toggler-custom {
+        display: none;
+    }
+
+    .nav-container-row{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .nav-container-column{
+        display:none;
+    }
+
+    .navbar-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+    }
+
+    .nav-link-custom {
+        padding: 10px 20px;
+        margin:10px 0px;
+        text-decoration: none;
+        color: white;
+        max-width: 150px;
+    }
+
+    
+
+    .nav-slot{
+        margin:12px 0px;
+    }
+
+    .nav-link-underline {
+        width: 0;
+        height: 2px;
+        background-color: var(--page-secondary);
+        /* Animation */
+        transition: 0.4s;
+    }
+
+    .nav-slot:hover .nav-link-underline {
+        width: 75%;
+    }
+
+</style>
+
+<!-- Small screen -->
+<style type="text/css" media="screen and (max-width:960px)">
+    
+    #appNavBar {
+        width:100%;
+        display:flex;
+        justify-content:center;
+    }
+
+    .nav-container-column {
+        display: block;
+        width: 100%;
+        height: 200px;
+    }
+
+    .nav-container-row {
+        display: none;
+    }
+    .nav-slot{
+        width:100%;
+        text-align:center;
+        margin:10px 0px;
+        font-size:21px;
+    }
+
+    .nav-accordion{
+        width: 100%;
+        display:flex;
+    }
+
+    .accordion-items{
+        width:100%;
+        display:none;
+    }
+
+    #navbar-toggler-custom {
+        display: block;
+        text-align: center;
+        width: 100%;
+        padding: 5px;
+        font-size: 24px;
+    }
+
+    #accordionChevron{
+        color: var(--page-secondary);
+        display:none;
+    }
+
+</style>
+
+@{
+    var projectsDropdown = new HoverableDropdownModel(
+                new List<string>() { "Projects", ".NET Core Web Apps", "WPF Desktop Apps" },
+                new List<string>() { "/Projects/Projects", "/Projects/NetCoreProjects", "/Projects/WpfProjects" }
+            );
+}
+
+<nav id="appNavBar" class="text-white box-shadow">
+    
+    <!-- Large screen -->
+    <div class="nav-container-row">
+
+        <!-- Links -->
+        <div class="navbar-list">
+
+            <!-- Home page-->
+            <div class="nav-slot">
+                <a class="nav-link-custom text-white text-decoration-none" asp-page="/Index" style="font-size:18px"><span>DKWeb</span></a>
+                <div class="nav-link-underline"></div>
+            </div>
+
+            <!-- Skills page-->
+            <div class="nav-slot">
+                <a class="nav-link-custom text-white text-decoration-none" asp-page="/Skills" style="font-size:18px"><span>Skills</span></a>
+                <div class="nav-link-underline"></div>
+            </div>
+
+            <!-- Projects Dropdown -->
+            <partial name="/Pages/Partial/_HoverableDropdown.cshtml" model="projectsDropdown" />
+
+            <!-- Contacts page-->
+            <div class="nav-slot">
+                <a class="nav-link-custom text-white text-decoration-none" asp-page="/Contacts" style="font-size:18px"><span>Contact Me</span></a>
+                <div class="nav-link-underline"></div>
+            </div>
+
+        </div>
+
+        <!-- Contacts icons -->
+        <div class="navbar-contacts row m-2 mt-0 mb-0">
+
+            <div class="col-3"></div>
+            <div class="col-8">
+                <div class="row" style="font-size:18px;">
+                    <a target=”_blank” href="https://www.facebook.com/Dimistov/" class="col-4"><i class="bi bi-facebook" style="color:white"></i></a>
+                    <a target=”_blank” href="https://discordapp.com/users/888138841427427369" class="col-4"><i class="bi bi-discord" style="color:white"></i></a>
+                    <a target=”_blank” href="https://twitter.com/Dimistov" class="col-4"><i class="bi bi-twitter" style="color:white"></i></a>
+                </div>
+            </div>
+            <div class="col-1"></div>
+
+        </div>
+    </div>
+
+    <!-- Small screen -->
+    <div class="nav-container-column">
+        <!-- Home page-->
+        <div class="nav-slot">
+            <a class="nav-link-custom text-white text-decoration-none" asp-page="/Index"><span>DKWeb</span></a>
+            <div class="nav-link-underline"></div>
+        </div>
+
+        <!-- Skills page-->
+        <div class="nav-slot">
+            <a class="nav-link-custom text-white text-decoration-none" asp-page="/Skills"><span>Skills</span></a>
+            <div class="nav-link-underline"></div>
+        </div>
+
+        <!-- Projects Dropdown -->
+
+        <div class="nav-slot">
+            <div class="nav-accordion">
+                <!-- Chevron button -->
+                <div class="col-3">
+                    <button class="page-button"><i id="accordionChevron" class="bi bi-chevron-down page-icon" style="margin:0px;"></i></button>
+                </div>
+
+                <!-- Project link -->
+                <div class="col-6">
+                    <a class="nav-link-custom text-white text-decoration-none" asp-page="/Projects/Projects"><span>Projects</span></a>
+                </div>
+                
+                <div class="col-3"></div>
+            </div>
+            
+        </div>
+
+        <!-- Dropdown items-->
+        <div class="accordion-items">
+            <!-- Net Core -->
+            <div class="nav-slot">
+                <a class="nav-link-custom text-decoration-none" asp-page="/Projects/NetCoreProjects" style="color:var(--page-secondary);"><span>.Net Core Projects</span></a>
+            </div>
+
+            <!-- WPF -->
+            <div class="nav-slot">
+                <a class="nav-link-custom text-decoration-none" asp-page="/Projects/WpfProjects" style="color:var(--page-secondary);"><span>WPF Projects</span></a>
+            </div>
+        </div>
+
+        <!-- Contacts page-->
+        <div class="nav-slot">
+            <a class="nav-link-custom text-white text-decoration-none" asp-page="/Contacts"><span>Contact Me</span></a>
+            <div class="nav-link-underline"></div>
+        </div>
+
+        <!-- Contacts icons -->
+        <div class="navbar-contacts row m-2 mt-0 mb-0">
+
+            <div class="col-3"></div>
+            <div class="col-8">
+                <div class="row" style="font-size:21px;">
+                    <a target=”_blank” href="https://www.facebook.com/Dimistov/" class="col-4"><i class="bi bi-facebook" style="color:white"></i></a>
+                    <a target=”_blank” href="https://discordapp.com/users/888138841427427369" class="col-4"><i class="bi bi-discord" style="color:white"></i></a>
+                    <a target=”_blank” href="https://twitter.com/Dimistov" class="col-4"><i class="bi bi-twitter" style="color:white"></i></a>
+                </div>
+            </div>
+            <div class="col-1"></div>
+
+        </div>
+    </div>
+    
+    <!-- Burger button for toggling navbar -->
+    <button id="navbar-toggler-custom" class="page-button">
+        <span><i class="bi bi-list"></i></span>
+    </button>
+</nav>
+
+<script type="text/javascript">
+    // Variables
+    var toggler = document.querySelector("#navbar-toggler-custom");
+    var navbar = document.querySelector(".nav-container-column");
+    var container = document.querySelector("#appNavBar");
+
+    // chevron retrieval
+    var button = document.querySelector("#accordionChevron");
+    var dropdown = document.querySelector(".accordion-items");  
+
+    let h = 0;
+    var toggleAnimator;
+
+    // Getting the maxheight
+    var maxHeight = navbar.offsetHeight;
+    navbar.style.display = "none";
+
+    //OnClick functionality
+    toggler.addEventListener("click", function() {
+        h = 0;
+        if (navbar.style.display == "none"){
+            navbar.style.display = "block";
+            navbar.style.height = 0 + "px";
+            container.style.display = "block";
+
+            // Animating enlargement
+            toggleAnimator = setInterval(enlargement, 10);
+        } else{
+            navbar.style.height == maxHeight + "px";
+
+            // chevron disappearance
+            button.style.display = "none";
+
+            // Animating shrinking
+            toggleAnimator = setInterval(shrinking, 5);
+        }
+    });
+
+    function enlargement(){
+        if (h >= maxHeight){
+            navbar.style.height = maxHeight + "px";
+            clearInterval(toggleAnimator);
+            // chevron appearance
+            button.style.display = "block";
+        } else{
+            h += 8;
+            navbar.style.height = h + "px";
+        }
+    }
+
+    function shrinking(){
+        if (h == maxHeight) {
+            navbar.style.height = 0 + "px";
+            navbar.style.display = "none";
+            container.style.display = "flex";
+
+            // Remove the dropdown menu on close if toggled 
+            if (dropdown.style.display == "block"){
+                dropdownToggling();
+            }
+
+            clearInterval(toggleAnimator);
+        } else {
+            h += 8;
+            navbar.style.height = (maxHeight - h) + "px";
+        }
+    }
+
+
+    // CHEVRON
+
+    button.addEventListener("click", dropdownToggling);
+
+    function dropdownToggling() {
+        if (dropdown.style.display == "none") {
+            // Resizing
+            dropdown.style.display = "block";
+            navbar.style.height = 300 + "px";
+
+            // Swapping chevron
+            button.classList.remove("bi-chevron-down");
+            button.classList.add("bi-chevron-up");
+        } else {
+            // Resizing
+            dropdown.style.display = "none";
+            navbar.style.height = 200 + "px";
+
+            // Swapping Chevron
+            button.classList.remove("bi-chevron-up");
+            button.classList.add("bi-chevron-down");
+        }
+    }
+
+</script>

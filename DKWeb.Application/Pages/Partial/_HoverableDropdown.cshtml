@@ -1,0 +1,61 @@
+﻿<!-- Partial view creating hoverable dropdown menu -->
+
+@model HoverableDropdownModel
+
+
+<style>
+	.dropdown-container {
+		position: relative;
+	}
+
+	.dropdown-button {
+		font-size: 18px;
+		padding: 10px 20px;
+		color: white;
+		background-color: var(--page-primary);
+	}
+
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+		background-color: var(--page-primary);
+		width: 150px;
+		z-index: 1;
+	}
+
+	.dropdown-custom .dropdown-link-custom {
+		display: block;
+
+		/* Cosmetics */
+		text-decoration: none;
+		padding: 12px 16px;
+		color: white;
+		font-size:18px;
+	}
+
+	/* Responsiveness */
+	.dropdown-container:hover .dropdown-content {
+		display: block;
+	}
+
+	.dropdown-custom:hover .nav-link-underline {
+		width:75%;
+	}
+</style>
+
+<div class="dropdown-container">
+	<div class="dropdown-custom">
+		<a asp-page="@Model.PageLinks[0]" class="dropdown-link-custom">@Model.PageNames[0]</a>
+		<div class="nav-link-underline" style=""></div>
+	</div>
+	<div class="dropdown-content" style="top:100%;">
+		@for(int i = 1; i < Model.PageLinks.Count; i++)
+		{
+			<div class="dropdown-custom">
+				<a asp-page="@Model.PageLinks[i]" class="dropdown-link-custom">@Model.PageNames[i]</a>
+				<div class="nav-link-underline" style="margin-bottom:5px;"></div>
+			</div>
+		}
+	</div>
+</div>

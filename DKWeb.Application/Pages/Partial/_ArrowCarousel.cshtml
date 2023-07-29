@@ -1,0 +1,178 @@
+﻿<!-- Partial view creating hoverable dropdown menu -->
+
+@model FadingCarouselModel
+@{
+    ColumnNodeModel node = new ColumnNodeModel();
+}
+<style media="screen and (min-width:961px)">
+    .carousel-chevron-container:hover {
+        opacity: 100%;
+        font-size: 32px;
+    }
+</style>
+
+<style>
+    /* Chevron */
+    .carousel-chevron-container {
+        /* Positioning */
+        position: absolute;
+        z-index: 3;
+        /* Items */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        /* Background */
+        height: 100%;
+        width: auto;
+        background-color: var(--page-dark);
+        padding: 0px 10px;
+        opacity: 50%;
+        /* Animation */
+        transition: 0.3s;
+    }
+
+    .carousel-chevron {
+        /* Cosmetics */
+        -webkit-text-stroke: 2px;
+        color: white;
+    }
+
+
+    /* Sizing */
+
+    .carousel-arrow {
+        background-color: black;
+        margin: 15px;
+        position: relative;
+        width: 640px;
+        height: 460px;
+    }
+</style>
+
+<style media="screen and (max-width:480px)">
+
+    .carousel-arrow {
+        width: 360px;
+        height: 300px;
+    }
+
+    .carousel-chevron-container:active {
+        opacity: 100%;
+        font-size: 32px;
+    }
+
+</style>
+
+<style media="screen and (max-width:960px)">
+
+    .carousel-chevron-container:active {
+        opacity: 100%;
+        font-size: 32px;
+    }
+</style>
+
+
+<style>
+    
+</style>
+
+<!-- Nodes -->
+<div class="carousel-arrow">
+    @for(int i = 0; i < Model.Descriptions.Count; i++)
+    {
+        <partial name="/Pages/Partial/_CarouselNode.cshtml" model="@node.NewModel($"{Model.Descriptions[i]}",$"{Model.Images[i]}");" />
+    }
+
+    <!-- Arrow buttons -->
+    <div class="carousel-chevron-container" style="right:0%;">
+        <i id="rightChevron" class="bi bi-chevron-right carousel-chevron"></i>
+    </div>
+
+    <div class="carousel-chevron-container" style="left:0%;">
+        <i id="leftChevron" class="bi bi-chevron-left carousel-chevron"></i>
+    </div>
+    
+    
+</div>
+
+    
+<script type="text/javascript">
+
+    // Foreach Arrow Carousel
+    var carousels = document.querySelectorAll(".carousel-arrow");
+    carousels.forEach(carousel =>{
+        arrowCarouselBehavior(carousel);
+    });
+
+    function arrowCarouselBehavior(carouselInstance){
+        // Elements
+        var carousel = carouselInstance;
+        var chevronR;
+        var chevronL;
+
+        // Selectors
+        var selectorIndex = 0;
+        var lastSelector = 3;
+
+        // Animation variables
+        var opac = 0;
+        var animationInterval;
+
+        // filtered items list
+        var carouselItems = [];
+        var count = carousel.children.length;
+
+        for (let i = 0; i < count; i++) {
+            var child = carousel.children[i];
+            if (child.classList.contains("carousel-item-custom")) {
+                carouselItems.push(child);
+            }
+            else if (child.classList.contains("carousel-chevron-container")){
+                if (child.firstElementChild.getAttribute("id") == "rightChevron"){
+                    chevronR = child;
+                } else if (child.firstElementChild.getAttribute("id") == "leftChevron"){
+                    chevronL = child;
+                }
+            }
+        }
+
+        // First image appearance
+        carouselItems[lastSelector].style.zIndex = 0;
+        carouselItems[selectorIndex].style.zIndex = 1;
+        carouselItems[selectorIndex].style.opacity = 100 + "%";
+
+        // Chevron event subscription
+        chevronR.addEventListener("click", Swap);
+        chevronL.addEventListener("click", Swap);
+
+        // Swap handler
+        function Swap(e) {
+            lastSelector = selectorIndex;
+
+            // Updating selectorIndex
+            if (e.target.getAttribute("id") == "rightChevron") {
+                selectorIndex = (selectorIndex + 1) % carouselItems.length;
+            } else {
+                selectorIndex = (((selectorIndex - 1) % carouselItems.length) + carouselItems.length) % carouselItems.length;
+            }
+
+            // Resetting animation
+            opac = 0
+            animationInterval = setInterval(fadeAnimation, 20);
+
+            // ANIMATION
+            function fadeAnimation() {
+                // Fading current image in
+                if (opac == 100) {
+                    clearInterval(animationInterval);
+                } else {
+                    opac += 2;
+                    carouselItems[selectorIndex].style.opacity = opac + "%";
+                    carouselItems[lastSelector].style.opacity = (100 - opac) + "%";
+                }
+            }
+        }
+    }
+    
+</script>

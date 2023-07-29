@@ -1,0 +1,32 @@
+﻿<!-- Partial view creating hoverable dropdown menu -->
+
+@model ContactNodeModel
+
+<style>
+    .node-addon{
+        color:white;
+        padding: 2px 5px;
+        border-radius:10px;
+    }
+</style>
+
+<!-- Node -->
+<div class="page-shadowed" style="width:400px; height:400px; margin:20px 50px;">
+    <!-- Image -->
+    <div style="width:400px; height:250px;">
+        <img style="width:400px; height:250px; object-fit:cover;" src="@Model.NodeIMG"/>
+    </div>
+
+    <!-- Prompt name -->
+    <div class="flexbox-container flexbox-container-centered bg-dark" style="width:400px; height:150px;">
+        @if(Model.NodeLink != "")
+        {
+            <p class="page-paragraph page-bordered-spaced text-white">@Model.NodeName<span><a href="@Model.NodeLink" target="_blank"> @Model.NodeLinkText</a></span>.</p>
+        }
+        else
+        {
+            <p class="page-paragraph page-bordered-spaced text-white">@Model.NodeName</p>
+        }
+
+    </div>
+</div>

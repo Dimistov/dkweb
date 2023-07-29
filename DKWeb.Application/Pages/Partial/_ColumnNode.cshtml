@@ -1,0 +1,29 @@
+﻿<!-- Partial view creating hoverable dropdown menu -->
+
+@model ColumnNodeModel
+
+<style>
+    .node-addon{
+        color:white;
+        padding: 2px 5px;
+        border-radius:10px;
+    }
+</style>
+
+<!-- Node -->
+<div class="page-shadowed" style="width:300px; height:400px; margin:20px 50px;">
+    <div style="width:300px; height:300px; position:relative;">
+        <!-- Image -->
+        <img style="width:300px; height:300px; object-fit:fill; position:absolute;" src="@Model.NodeIMG" />
+        <!-- Node addon -->
+        @if(Model.NodeAddon != "")
+        {
+            <p class="page-paragraph node-addon bg-dark" style="position:absolute;">@Model.NodeAddon</p>
+        }
+    </div>
+
+    <!-- Node name -->
+    <div class="flexbox-container flexbox-container-centered bg-dark" style="width:300px; height:100px;">
+        <p class="page-heading page-bordered text-white">@Model.NodeName</p>
+    </div>
+</div>

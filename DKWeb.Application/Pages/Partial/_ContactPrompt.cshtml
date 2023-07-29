@@ -1,0 +1,44 @@
+﻿<!-- Large screen -->
+<style media="screen and (min-width:961px)">
+	.empty {
+		flex: 0 0 auto;
+		width: 25%;
+	}
+
+	.hooker {
+		flex: 0 0 auto;
+		width: 50%;
+	}
+</style>
+
+<!-- Small screen -->
+<style media="screen and (max-width:960px)">
+	.empty {
+		flex: 0 0 auto;
+		width: 8.33333333%;
+	}
+
+	.hooker {
+		flex: 0 0 auto;
+		width: 83.33333333%;
+	}
+</style>
+
+<!-- Small screen -->
+<div class="page-band-white row" style="width:100%;">
+	<div class="empty"></div>
+	<div class="hooker">
+		<p class="page-statement">Are you convinced?</p>
+		<hr class="hr-main" />
+		<div class="row">
+			<div class="empty"></div>
+			<!-- Contact button -->
+			<div class="hooker page-statement page-button">
+				<a asp-page="/Contacts" style="width: 50%; text-align:center; text-decoration:none; color:white;">Contact me</a>
+				<div class="nav-link-underline" style="margin-bottom:5px;"></div>
+			</div>
+			<div class="hooker"></div>
+		</div>
+	</div>
+	<div class="empty"></div>
+</div>

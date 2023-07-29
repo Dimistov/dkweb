@@ -1,0 +1,72 @@
+﻿@page
+@model DKWeb.Application.Pages.Projects.WpfProjectsModel
+@{
+	FadingCarouselModel carousel = new FadingCarouselModel();
+}
+
+<!-- Palette Video -->
+<div class="page-rel bg-dark presentation-container">
+
+	<!-- Content -->
+	<div class="flexbox-container flexbox-container-spaced page-abs" style="z-index:1;">
+	
+		<!-- Description -->
+		<div class="flexbox-container presentation-band">
+
+			<p class="page-heading page-bordered flexbox-item presentation-item">Palette Assember App</p>
+
+			<p class="page-paragraph flexbox-item text-center presentation-item">I have built a couple of WPF desktop applications serving as convenient tools for organization, scheduling, and even creating art. Visualized on the right is one of my larger apps which helps you assemble a color palette by locking a personal selection of random colors. It was inspired by the website <span><a href="https://coolors.co/" target="_blank">coolors.co</a></span>.</p>
+
+		</div>
+
+		<!-- Video -->
+		<video autoplay muted loop src="~/media/Coolors presentation.mp4" class="presentation-video" style="padding:0px 15px;"></video>
+
+	</div>
+
+	<!-- Background image -->
+	<img class="page-bg-image presentation-container" src="https://www.spiria.com/site/assets/files/6136/banner_variadic.webp?v=1684849267" />
+</div>
+
+
+<!-- Tools carousel -->
+<div class="page-rel bg-dark presentation-container">
+
+	<!-- Content -->
+	<div class="flexbox-container flexbox-container-spaced page-abs" style="z-index:1;">
+		<!-- Carousel -->
+		<div style="position:relative;">
+			<partial name="/Pages/Partial/_ArrowCarousel.cshtml" model="@carousel.NewModel(
+new List<string>(){
+	"/images/Tools/Tool emails.png",
+	"/images/Tools/Tool stopwatch.png",
+	"/images/Tools/Tool browsing.png",
+	"/images/Tools/Tool quiz.png",
+	"/images/Tools/Tool notes.png",
+},
+new List<string>(){
+	"Email holder",
+	"Simple stopwatch",
+	"Items browsing",
+	"Multiple-choice quiz",
+	"Note-taking app"
+});" />
+		</div>
+
+		<!-- Description -->
+		<div class="flexbox-container presentation-band">
+
+			<p class="page-heading page-bordered flexbox-item presentation-item">Simple Desktop Tools</p>
+
+			<p class="page-paragraph flexbox-item text-center presentation-item">If you need a simple tool which automates certain tasks and stores information for you in a database, I might think up a solution for you. I have made a variety of desktop tools including a note app, a quiz form, and an email holder - all of which you can see on the left.</p>
+
+		</div>
+	</div>
+
+	<!-- Background image -->
+	<img class="page-bg-image presentation-container" src="https://www.spiria.com/site/assets/files/6136/banner_variadic.webp?v=1684849267" />
+</div>
+
+<!-- Contact prompt-->
+
+<partial name="/Pages/Partial/_ContactPrompt.cshtml" />

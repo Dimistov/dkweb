@@ -1,0 +1,52 @@
+﻿@page
+@model IndexModel
+@{
+    // Title
+    ViewData["Title"] = "Home";
+
+    #region Model instantiation
+    ImageTrapezoidModel trapezoid = new ImageTrapezoidModel();
+    PageStatementModel statement = new PageStatementModel();
+    #endregion
+}
+<div>
+    <!-- Hooker -->
+    <partial name="/Pages/Partial/_PageStatement.cshtml" model="@statement.NewModel("Need a web or desktop app?","Say no more:")" />
+
+    <!-- profile attempt -->
+    <partial name="/Pages/Partial/_ImageTrapezoid.cshtml" model="@trapezoid.NewModel("About Me", "I am Dimitar Kostov, a young programming enthusiast and my main priority has always been outstanding quality. Here is a glimpse of my experience:", Side.Right, "/images/background/Windows.jpg", "/images/background/Laptop.jpg", new List<string>(){
+    "4+ years in HTML and CSS",
+    "3+ years in JS, SQL and Bootstrap",
+    "1.5 years in C# and .NET",
+    "1+ years in Microsoft WPF and ASP.NET Core"
+    }, TrapezoidAdaptation.Profile)" />
+
+    <!-- What I offer -->
+    <partial name="/Pages/Partial/_ImageTrapezoid.cshtml" model="@trapezoid.NewModel("What I offer", "", Side.Left, "/images/background/Screens.jpg", "/images/background/Data.jpg", new List<string>(){
+    "Detailed discussions with you about website features",
+    "Negotiated website size (usually 10-15 pages, but could be more)",
+    "Database implementation",
+    "Desktop and mobile support",
+    "Publishing and hosting support",
+    "Finished product in 1-2 weeks (depending on size)"
+    }, TrapezoidAdaptation.Links)" />
+
+    <!-- Why me -->
+    <partial name="/Pages/Partial/_ImageTrapezoid.cshtml" model="@trapezoid.NewModel("Why me", "I have learned a considerable amount in development and as Democritus once said \"Strength and beauty are the blessings of youth\". I will hence always strive to improve and bring you the best possible:", Side.Right, "/images/background/Desk.jpg", "/images/background/Chart.jpg", new List<string>(){
+    "You can get a view of the production process whenever you want and as frequently as you want.",
+    "I could ask you questions about design preference if you would like to get more involved in production.",
+    "I will provide thorough documentation to ease future development.",
+    "Responsibility to help you resolve any potential bugs you encounter in the finished product.",
+    })" />
+
+    <!-- Contact prompt -->
+    <partial name="/Pages/Partial/_ContactPrompt.cshtml" />
+</div>    
+
+
+<script>
+    document.cookie = "pageName=null; expires = Sun, 6 January 2000 12: 00: 00 UTC; ";
+    document.cookie = "pageName=Home; expires = Sun, 6 January 2030 12: 00: 00 UTC; ";
+    console.log(document.cookie);
+</script>
+

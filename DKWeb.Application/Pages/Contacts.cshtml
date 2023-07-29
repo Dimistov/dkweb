@@ -1,0 +1,30 @@
+﻿@page
+@model DKWeb.Application.Pages.ContactsModel
+@{
+	// Title
+	ViewData["Title"] = "Contacts";
+
+	#region	Instantiation
+	ContactNodeModel node = new ContactNodeModel();
+	#endregion
+}
+
+<div class="flexbox-container flexbox-container-rowed" style="width:100%;">
+	<!-- Location -->
+	<partial name="/Pages/Partial/_ContactNode.cshtml" model="@node.NewModel("I come from Sofia, Bulgaria, meaning I am in the UTC+02:00 time zone. I will nonetheless try to respond at any given time.", "/images/contacts/Bulgaria.png")" />
+
+	<!-- Email -->
+	<partial name="/Pages/Partial/_ContactNode.cshtml" model="@node.NewModel("At any time you find suitable, you may contact me by", "/images/contacts/Gmail.jpeg", "mailto:mkostov2004@gmail.com", "email")" />
+
+	<!-- Facebook -->
+	<partial name="/Pages/Partial/_ContactNode.cshtml" model="@node.NewModel("Of course, I am also available for a private message on", "/images/contacts/Facebook.jpg", "https://www.facebook.com/Dimistov/", "Facebook")" />
+
+	<!-- Discord -->
+	<partial name="/Pages/Partial/_ContactNode.cshtml" model="@node.NewModel("If you prefer less formal media, I am open to (and most inclined to) communicate through", "/images/contacts/Discord.jpg", "https://discordapp.com/users/888138841427427369", "Discord")" />
+
+	<!-- Twitter -->
+	<partial name="/Pages/Partial/_ContactNode.cshtml" model="@node.NewModel("As a last resort, you can also find me on", "/images/contacts/Twitter.jpeg", "https://twitter.com/Dimistov", "Twitter")" />
+</div>
+
+
+

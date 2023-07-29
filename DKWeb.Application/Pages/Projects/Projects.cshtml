@@ -1,0 +1,110 @@
+﻿@page
+@model DKWeb.Application.Pages.Projects.ProjectsModel
+@{
+	ViewData["Title"] = "Projects";
+
+	#region Model Instantiation
+	ImageHeadingModel imageHeading = new ImageHeadingModel();
+	FadingCarouselModel carousel = new FadingCarouselModel();
+	ColumnNodeModel node = new ColumnNodeModel();
+	#endregion
+
+}
+
+<!-- WEB -->
+
+<!-- WEB heading -->
+<partial name="/Pages/Partial/_ImageHeading.cshtml" model="@imageHeading.NewModel("Web Development", "https://res.infoq.com/articles/secure-distributed-database-cluster/en/headerimage/generatedHeaderImage-1660581268935.jpg")" />
+
+<!-- WEB Carousel -->
+<div class="page-rel bg-dark presentation-container">
+	
+	<!-- Content -->
+	<div class="flexbox-container flexbox-container-spaced page-abs" style="z-index:1;">
+		<!-- Description -->
+		<div class="flexbox-container presentation-band">
+
+			<p class="page-heading page-bordered flexbox-item presentation-item">Brand Info Website</p>
+
+			<p class="page-paragraph flexbox-item text-center presentation-item">Are you in need of a website to showcase your brand or products. I can build a responsive website with a pleasant UI and convenient navigation and functionality just like the Coffee Place website on the right or like my <span><a asp-page="/Index" target="_blank">portfolio website</a></span>. Learn more about my <span><a asp-page="/Projects/NetCoreProjects">web development </a></span>projects.</p>
+
+		</div>
+
+		<!-- Carousel -->
+		<div style="position:relative;">
+			<partial name="/Pages/Partial/_FadingCarousel.cshtml" model="@carousel.NewModel(
+new List<string>(){
+	"/images/CoffeePlace home page.png",
+	"/images/CoffeePlace customers review.png",
+	"/images/CoffeePlace contacts.png",
+	"/images/CoffeePlace login.png"
+},
+new List<string>(){
+	"Home page",
+	"Customer review section",
+	"Contacts page",
+	"Login page"
+});" />
+		</div>
+	</div>
+
+	<!-- Background image -->
+	<img class="page-bg-image presentation-container" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhde9HGaBrQn-Xi4GN9MFSRh8c3gOq2wUXzGLe3v2mjG1cwcFERX0iRjrdneyuuw6SbHyfMp53nCSnvGUSUY_RIqxugqUE1h97zdZObIGlbIYCN8KjdfF4nfczpjprRIxcPbFOFOFT4EYAaXV2TB-UPYlvbD4mDsKLSVovUSfCLvizJMhYULs3TqZ6AIw/s550/CE0060b.png"/>
+</div>
+
+
+<!-- DESKTOP -->
+
+<!-- DESKTOP heading -->
+<partial name="/Pages/Partial/_ImageHeading.cshtml" model="@imageHeading.NewModel("Desktop Development", "https://www.perfomatix.com/wp-content/uploads/2020/10/web-designing-tips.jpg")" />
+
+<!-- DESKTOP Carousel -->
+<div class="page-rel bg-dark presentation-container">
+
+	<!-- Content -->
+	<div class="flexbox-container flexbox-container-spaced page-abs" style="z-index:1;">
+		<!-- Carousel -->
+		<div style="position:relative;">
+			<partial name="/Pages/Partial/_FadingCarousel.cshtml" model="@carousel.NewModel(
+new List<string>(){
+	"/images/Coolors explore.png",
+	"/images/Coolors selection.png",
+	"/images/Coolors marking.png",
+	"/images/Coolors palette save.png",
+	"/images/Coolors palette lock.png",
+	"/images/Coolors editing.png"
+},
+new List<string>(){
+	"Startup page",
+	"Color palettes",
+	"Palette selection",
+	"Palette display",
+	"Locking colors",
+	"Editing a palette"
+});" />
+		</div>
+		
+		<!-- Description -->
+		<div class="flexbox-container presentation-band" style="flex-direction:column; justify-content:space-between; align-items:center; ">
+
+			<p class="page-heading page-bordered flexbox-item presentation-item">Simple Desktop Application</p>
+
+			<p class="page-paragraph flexbox-item text-center presentation-item">Looking for a simple tool/application which to automate some task for you or help you in your work? I can develop it by taking account of all features you want it to have. On your wish, I can also work on a pleasant UI such as that in the color application on the left, inspired by <span><a href="https://coolors.co/" target="_blank">coolors.co</a></span>. Learn more about my <span><a asp-page="/Projects/WpfProjects">desktop development </a></span>projects.</p>
+
+		</div>
+	</div>
+
+	<!-- Background image -->
+	<img class="page-bg-image presentation-container" src="https://www.spiria.com/site/assets/files/6136/banner_variadic.webp?v=1684849267" />
+</div>
+
+<!-- Contact prompt -->
+<partial name="/Pages/Partial/_ContactPrompt.cshtml" />
+
+
+<script>
+	//document.cookie = "pageName=null; expires = Sun, 6 January 2000 12: 00: 00 UTC; ";
+	//document.cookie = "pageName=Projects; expires = Sun, 6 January 2030 12: 00: 00 UTC; ";
+	//console.log(document.cookie);
+</script>
+

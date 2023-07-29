@@ -1,0 +1,11 @@
+﻿<!-- Partial view creating hoverable dropdown menu -->
+
+@model ImageHeadingModel
+
+<!-- Carousel Image -->
+<div class="bg-dark" style="width:100%; position:relative; height:150px;">
+    <img style="position:absolute; width:100%; opacity:30%; height:150px;" src="@Model.ImgURL" />
+    <div class="flexbox-container flexbox-container-centered" style="position:absolute;">
+        <p class="page-statement page-bordered text-white" style="width:300px;">@Model.HeadingText</p>
+    </div>
+</div>

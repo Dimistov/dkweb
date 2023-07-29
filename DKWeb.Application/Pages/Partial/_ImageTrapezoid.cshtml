@@ -1,0 +1,326 @@
+﻿<!-- Partial view creating hoverable dropdown menu -->
+
+@model ImageTrapezoidModel
+
+<!-- Large screen-->
+<style media="screen and (min-width:961px)">
+	
+	.trapezoid-large {
+		display: block;
+	}
+
+	.trapezoid-small {
+		display: none;
+	}
+	
+	/* Profile */
+
+	.profile-img {
+		/* Altering image view */
+		width: 360px;
+		height: 360px;
+		/* Creating a circle */
+		clip-path: circle(140px at center);
+		object-fit: cover;
+	}
+
+	.profile-container {
+		/* FLEX */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: white;
+		z-index: 3;
+		top: 0px;
+		right: 80px;
+		/* Dimensions */
+		width: 400px;
+		height: 400px;
+		/* Clipping */
+		clip-path: circle(143px at center);
+	}
+</style>
+
+<!-- General -->
+<style>
+	/* Clipping */
+	.img-trapezoid{
+		width: 100%;
+		height: 400px;
+		object-fit: cover;
+	}
+
+
+	.img-trapezoid-right {
+		z-index: 3;
+		clip-path: polygon(50% 0, 100% 0, 100% 100%, 67% 100%);
+	}
+	.img-background-right{
+		opacity: 15%;
+		z-index: 2;
+		clip-path: polygon(0 0, 50% 0, 67% 100%, 0 100%);
+	}
+
+	.img-trapezoid-left {
+		z-index: 3;
+		clip-path: polygon(0 0, 50% 0, 33% 100%, 0 100%);
+	}
+
+	.img-background-left {
+		opacity: 15%;
+		z-index: 2;
+		clip-path: polygon(50% 0, 100% 0, 100% 100%, 33% 100%);
+	}
+
+	.trapezoid-container{
+		position:relative;
+		width: 100%;
+	}
+
+	.trapezoid-image{
+		width: 100%;
+	}
+
+	.trapezoid-container ul {
+		list-style-type:none;
+	}
+
+	.trapezoid-container li:before{
+			content: '✓ ';
+	}
+
+	.trapezoid-item{
+		position:absolute;
+	}
+
+	/* Responsiveness */
+
+	.trapezoid-large{
+		display:block;
+	}
+
+	.trapezoid-small{
+		display:none;
+	}
+</style>
+
+<!-- Small screen -->
+<style media="screen and (max-width:960px)">
+	.trapezoid-large {
+		display: none;
+	}
+
+	.trapezoid-small {
+		display: block;
+		height:auto;
+	}
+
+	.img-background{
+		opacity: 15%;
+		z-index: 2;
+		height: 500px;
+		object-fit:cover;
+	}
+
+	.trapezoid-container{
+		position:relative;
+		width:100%;
+		height:500px;
+	}
+
+	.paragraph-item {
+		width: 100%;
+	}
+
+	/* Profile */
+	.profile-img {
+		/* Altering image view */
+		width: 220px;
+		height: 220px;
+		z-index:3;
+		/* Creating a circle */
+		clip-path: circle(90px at center);
+		object-fit: cover;
+
+		left:40%;
+	}
+
+	.profile-container {
+		width:100%;
+		height:100%;
+		/* FLEXBOX */
+		display: flex;
+		flex-direction: column;
+		justify-content:center;
+		align-items: center;
+		background-color:transparent;
+	}
+</style>
+
+<!-- Medium screen specific -->
+<style media="screen and (min-width: 481px) and (max-width: 980px)">
+	/* Profile */
+	.profile-img {
+		/* Altering image view */
+		width: 360px;
+		height: 360px;
+		/* Creating a circle */
+		clip-path: circle(140px at center);
+		object-fit: cover;
+	}
+
+	.paragraph-item{
+		width:80%;
+	}
+</style>
+
+<!-- Small screen -->
+<div class="trapezoid-small">
+	<!-- Container -->
+	<div class="trapezoid-container bg-dark">
+
+		<!-- Text-->
+		<div class="trapezoid-item flexbox-container text-white" style="z-index:3; height: 100%; width:100%; flex-direction:column; align-items:center; justify-content:center; padding:20px;">
+			<p class="page-heading page-bordered flexbox-item paragraph-item">@Model.Heading</p>
+
+			<!-- Checking if this is the links adaptation -->
+			@if (Model.Adaptation == TrapezoidAdaptation.Links)
+			{
+				<p class="page-paragraph flexbox-item text-center paragraph-item">My years in programming have taught me not only <span><a asp-page="/Skills">skills</a></span> but also a dedication to make each of my <span><a asp-page="Projects/Projects">projects</a></span> unique. I will improve upon each project until I give you the finished product while also providing the fundamentals:</p>
+			}
+			else
+			{
+				<p class="page-paragraph flexbox-item text-center paragraph-item">@Model.Paragraph</p>
+			}
+
+			<!-- Checking whether list exists -->
+			@if (Model.FactListing != null)
+			{
+				<ul class="paragraph-item page-paragraph">
+					@foreach (string fact in Model.FactListing)
+					{
+						<li>@fact</li>
+					}
+				</ul>
+			}
+
+		</div>
+
+		<!-- background image-->
+		@if (Model.SecondaryImgURL != "")
+		{
+			<img class="trapezoid-item img-background" src="@Model.SecondaryImgURL" />
+		}
+	</div>
+
+	@if (Model.Adaptation == TrapezoidAdaptation.Profile)
+	{
+		<!-- Profile picture -->
+		<div class="trapezoid-container bg-dark">
+
+			<!-- Text-->
+			<div class="profile-container trapezoid-item">
+				<img class="profile-img" src="/images/ProfilePicture.jpg" />
+				<p class="page-heading text-white">Dimitar Kostov</p>
+			</div>
+
+			<img class="trapezoid-item img-background" src="@Model.MainImgURL" />
+		</div>
+	}
+</div>
+
+<!-- Large screen -->
+<div class="row trapezoid-large bg-dark">
+
+	<!-- Deciding image side -->
+	@if (Model.ImgSide == Side.Right)
+	{
+		<!-- Container -->
+		<div class="trapezoid-container col-6">
+
+			<!-- Text-->
+			<div class="trapezoid-item flexbox-container text-white" style="z-index:3; width:50%; flex-direction:column; align-items:center; justify-content:flex-start; padding:20px;">
+				<p class="page-heading page-bordered flexbox-item">@Model.Heading</p>
+				<p class="page-paragraph flexbox-item text-center">@Model.Paragraph</p>
+
+				<!-- Checking whether list exists -->
+				@if (Model.FactListing != null)
+				{
+					<ul>
+						@foreach (string fact in Model.FactListing)
+						{
+							<li>@fact</li>
+						}
+					</ul>
+				}
+
+			</div>
+
+			<!-- background image-->
+			@if (Model.SecondaryImgURL != "")
+			{
+				<img class="trapezoid-item img-trapezoid img-background-right" src="@Model.SecondaryImgURL" />
+			}
+		</div>
+
+		<!-- Main Image -->
+		<div class="trapezoid-container col-6 bg-dark">
+			<img class="img-trapezoid img-trapezoid-right" style="z-index:3;" src="@Model.MainImgURL" />
+			@if (Model.Adaptation == TrapezoidAdaptation.Profile)
+			{
+				<div class="profile-container trapezoid-item">
+					<img class="profile-img" src="/images/ProfilePicture.jpg" />
+				</div>
+
+			}
+		</div>
+	}
+	else
+	{
+		<!-- Container -->
+		<div class="trapezoid-container col-6 bg-dark">
+
+			<!-- Text-->
+			<div class="trapezoid-item flexbox-container text-white" style="z-index:3; height: 100%; width:100%; flex-direction:column; align-items:end; justify-content:flex-start; padding:40px 50px;">
+
+				<p class="page-heading page-bordered flexbox-item" style="text-align:end; margin-right: 150px; padding-right:55px;">@Model.Heading</p>
+
+				<!-- Checking if this is the links adaptation -->
+				@if (Model.Adaptation == TrapezoidAdaptation.Links)
+				{
+					<p class="page-paragraph flexbox-item text-center" style="width:600px;">My years in programming have taught me not only <span><a asp-page="/Skills">skills</a></span> but also a dedication to make each of my <span><a asp-page="Projects/Projects">projects</a></span> unique. I will improve upon each project until I give you the finished product while also providing the fundamentals:</p>
+				}
+				else
+				{
+					<p class="page-paragraph flexbox-item text-center" style="width:600px;">@Model.Paragraph</p>
+				}
+
+
+				<!-- Deciding whether list exists -->
+				@if (Model.FactListing != null)
+				{
+					<ul>
+						@foreach (string fact in Model.FactListing)
+						{
+							<li>@fact</li>
+						}
+					</ul>
+				}
+
+			</div>
+
+			<!-- background image-->
+			@if (Model.SecondaryImgURL != "")
+			{
+				<img class="trapezoid-item img-trapezoid img-background-left" src="@Model.SecondaryImgURL" />
+			}
+		</div>
+
+		<!-- Main Image -->
+		<div class="trapezoid-image col-6 bg-dark">
+			<img class="img-trapezoid img-trapezoid-left" src="@Model.MainImgURL" />
+		</div>
+	}
+
+
+</div>

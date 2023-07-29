@@ -1,0 +1,86 @@
+﻿@page
+@model DKWeb.Application.Pages.Projects.NetCoreProjectsModel
+@{
+	FadingCarouselModel carousel = new FadingCarouselModel();
+}
+
+<!-- Brand info website -->
+<div class="page-rel bg-dark presentation-container">
+
+	<!-- Content -->
+	<div class="flexbox-container flexbox-container-spaced page-abs" style="z-index:1;">
+		<!-- Description -->
+		<div class="flexbox-container presentation-band">
+
+			<p class="page-heading page-bordered flexbox-item presentation-item">Brand Info Website</p>
+
+			<p class="page-paragraph flexbox-item text-center presentation-item">I have built multiple websites consisting of a couple of pages just like the one on the right. I can build a similar website for your brand with convenient features such as a navigation bar, custom scroll bar, image carousels, accordions, etc.</p>
+
+		</div>
+
+		<!-- Carousel -->
+		<div style="position:relative;">
+			<partial name="/Pages/Partial/_ArrowCarousel.cshtml" model="@carousel.NewModel(
+new List<string>(){
+	"/images/CoffeePlace home page.png",
+	"/images/CoffeePlace customers review.png",
+	"/images/CoffeePlace contacts.png",
+	"/images/CoffeePlace login.png"
+},
+new List<string>(){
+	"Home page",
+	"Customer review section",
+	"Contacts page",
+	"Login page"
+});" />
+		</div>
+	</div>
+
+	<!-- Background image -->
+	<img class="page-bg-image presentation-container" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhde9HGaBrQn-Xi4GN9MFSRh8c3gOq2wUXzGLe3v2mjG1cwcFERX0iRjrdneyuuw6SbHyfMp53nCSnvGUSUY_RIqxugqUE1h97zdZObIGlbIYCN8KjdfF4nfczpjprRIxcPbFOFOFT4EYAaXV2TB-UPYlvbD4mDsKLSVovUSfCLvizJMhYULs3TqZ6AIw/s550/CE0060b.png" />
+</div>
+
+
+<!-- Personal portfolio website -->
+<div class="page-rel bg-dark presentation-container">
+
+	<!-- Content -->
+	<div class="flexbox-container flexbox-container-spaced page-abs" style="z-index:1;">
+		
+		<!-- Carousel -->
+		<div style="position:relative;">
+			<partial name="/Pages/Partial/_ArrowCarousel.cshtml" model="@carousel.NewModel(
+new List<string>(){
+	"/images/Portfolio/Portfolio navigation.png",
+	"/images/Portfolio/Portfolio image clipping.png",
+	"/images/Portfolio/Portfolio contact prompt.png",
+	"/images/Portfolio/Portfolio skill nodes.png",
+	"/images/Portfolio/Portfolio fading carousel.png"
+
+},
+new List<string>(){
+	"Navigation bar",
+	"Image clipping",
+	"Contact prompt",
+	"Skill nodes",
+	"Fading carousel"
+});" />
+		</div>
+		
+		<!-- Description -->
+		<div class="flexbox-container presentation-band">
+
+			<p class="page-heading page-bordered flexbox-item presentation-item">Personal Portfolio Website</p>
+
+			<p class="page-paragraph flexbox-item text-center presentation-item">I also build the website you are currently viewing myself (reviewable on the left). I can build you a similar personal or company portfolio website with a professional look and authentic design.</p>
+
+		</div>
+	</div>
+
+	<!-- Background image -->
+	<img class="page-bg-image presentation-container" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhde9HGaBrQn-Xi4GN9MFSRh8c3gOq2wUXzGLe3v2mjG1cwcFERX0iRjrdneyuuw6SbHyfMp53nCSnvGUSUY_RIqxugqUE1h97zdZObIGlbIYCN8KjdfF4nfczpjprRIxcPbFOFOFT4EYAaXV2TB-UPYlvbD4mDsKLSVovUSfCLvizJMhYULs3TqZ6AIw/s550/CE0060b.png" />
+</div>
+
+
+<!-- Contact prompt -->
+<partial name="/Pages/Partial/_ContactPrompt.cshtml" />

@@ -1,0 +1,117 @@
+﻿<!-- Partial view creating hoverable dropdown menu -->
+
+@model FadingCarouselModel
+@{
+    ColumnNodeModel node = new ColumnNodeModel();
+}
+
+<style>
+    .carousel-custom{
+        background-color:black;
+        margin:15px;
+        position: relative;
+        width: 640px;
+        height: 460px;
+    }
+</style>
+
+<style media="screen and (max-width:480px)">
+    .carousel-custom {
+        width: 360px;
+        height: 300px;
+    }
+</style>
+
+<!-- Nodes -->
+<div class="carousel-custom">
+    @for(int i = 0; i < Model.Descriptions.Count; i++)
+    {
+        <partial name="/Pages/Partial/_CarouselNode.cshtml" model="@node.NewModel($"{Model.Descriptions[i]}",$"{Model.Images[i]}");" />
+    }
+</div>
+
+
+
+
+    
+<script type="text/javascript">
+
+    // Setting behavior for both carousels
+    var carousels = document.querySelectorAll(".carousel-custom");
+    carousels.forEach(carousel => {
+        carouselBehavior(carousel);
+    });
+
+    function carouselBehavior(carouselInstance){
+        // Variables
+        var carousel = carouselInstance;
+        var selectorIndex = 0;
+        var lastSelector = 3;
+
+        // filtered items list
+        var carouselItems = [];
+        var count = carousel.children.length;
+
+        for (let i = 0; i < count; i++) {
+            var child = carousel.children[i];
+            if (child.nodeName == "DIV") {
+                carouselItems.push(child);
+            }
+        }
+
+
+        // Setting interval for fading, with initial delay zero
+        const fadingInterval = setInterval(fading, 5000);
+
+        // First fading animation
+        let opac = 0;
+        var animationInterval = setInterval(fadeAnimation, 20);
+
+        // Fading function
+        function fading() {
+
+            // Resetting
+            opac = 0;
+            lastSelector = selectorIndex;
+
+            // incrementing the selector index
+            selectorIndex = (selectorIndex + 1) % carouselItems.length;
+
+            carouselItems[lastSelector].style.zIndex = 0;
+            carouselItems[selectorIndex].style.zIndex = 1;
+            animationInterval = setInterval(fadeAnimation, 20);
+
+
+            // $TODO: fix the refresh checking
+
+            //var value = getCookie("pageName");
+            //console.log(value);
+            //if(value != "Projects"){
+            //    clearInterval(fadingInterval);
+            //}
+        }
+
+
+        // ANIMATION
+        function fadeAnimation() {
+
+            // Fading current image in
+            if (opac == 100) {
+                clearInterval(animationInterval);
+            } else {
+                opac += 2;
+                carouselItems[selectorIndex].style.opacity = opac + "%";
+                carouselItems[lastSelector].style.opacity = (100 - opac) + "%";
+
+            }
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+    }
+
+    
+</script>

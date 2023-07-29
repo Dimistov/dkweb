@@ -1,0 +1,55 @@
+﻿<!-- Partial view creating hoverable dropdown menu -->
+
+@*@model ColumnNodeModel*@
+
+<style>
+    .carousel-item-custom {
+        opacity: 0;
+        z-index: 0;
+        position: absolute;
+        width: 640px;
+        height: 460px;
+    }
+
+    .carousel-sizing-img {
+        width:640px;
+        height:360px;
+    }
+
+    .carousel-sizing-text{
+        width: 640px;
+        height: 100px;
+    }
+</style>
+
+<style media="screen and (max-width:480px)">
+    
+    .carousel-item-custom{
+        width: 360px;
+        height: 300px;
+    }
+    
+    .carousel-sizing-img {
+        width:360px;
+        height:215px;
+    }
+
+    .carousel-sizing-text{
+        width: 360px;
+        height: 85px;
+    }
+</style>
+
+<!-- Node -->
+<div class="carousel-item-custom page-shadowed">
+    <div class="carousel-sizing-img">
+        <!-- Image -->
+        <img class="carousel-sizing-img" style="object-fit:fill;" src="@Model.NodeIMG" />
+    </div>
+
+    <!-- Node name -->
+    <div class="flexbox-container flexbox-container-centered bg-dark carousel-sizing-text">
+        <p class="page-heading page-bordered text-white">@Model.NodeName</p>
+    </div>
+</div>
+
