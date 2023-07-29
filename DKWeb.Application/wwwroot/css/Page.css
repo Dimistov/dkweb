@@ -1,0 +1,180 @@
+.page-bg-image {
+    position: absolute;
+    width: 100%;
+    object-fit: cover;
+    opacity: 10%;
+    z-index: 0;
+}
+
+.page-rel {
+    position: relative;
+}
+
+.page-abs {
+    position: absolute;
+}
+
+.page-paragraph {
+    font-size: 16px;
+    margin: 3px 0px;
+    line-height: 1.5rem;
+}
+
+.page-statement {
+    font-size: 42px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.page-heading {
+    font-size: 28px;
+    margin: 10px 0px;
+}
+
+.page-subheading {
+    font-size: 20px;
+    text-decoration: underline;
+    margin: 20px 0px;
+}
+
+.page-bordered {
+    border-bottom: 1px solid white;
+    width: 250px;
+    text-align: center;
+}
+
+.page-bordered-spaced {
+    border-top: 2px dashed white;
+    border-bottom: 2px dashed white;
+    padding: 10px 0px;
+    width: 250px;
+    text-align: center;
+}
+
+
+.page-boldened {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.page-list li {
+    list-style-type: circle;
+}
+
+.page-list-none li {
+    list-style-type: none;
+}
+
+.page-table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 5px 0px;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(2n) {
+    background-color: var(--page-gray);
+}
+
+.page-video {
+    width: 100%;
+    height: 400px;
+}
+
+.page-form {
+    background-color: var(--page-gray);
+    border-radius: 50px;
+}
+
+.page-form-small {
+    margin: 50px 300px;
+    padding: 50px;
+}
+
+.page-button {
+    border: none;
+    padding: 10px 20px;
+    background-color: var(--page-primary);
+    color: white;
+    text-decoration: none;
+}
+
+    .page-button:hover .nav-link-underline {
+        width: 100%;
+    }
+
+.page-shadowed {
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.page-band-white {
+    width: 100%;
+    background-color: white;
+    color: var(--page-primary);
+}
+
+.page-band-blue {
+    width: 100%;
+    color: white;
+    background-color: var(--page-primary);
+}
+
+.page-wrap {
+    float: right;
+    margin: 5px;
+}
+
+.page-popup {
+    width: 100%;
+    padding: 5px 15px;
+    margin: 5px 10px;
+    border-radius: 10px;
+    background-color: var(--page-primary);
+    color: white;
+    /* JS managed */
+    visibility: hidden;
+    /* For animations */
+    position: absolute;
+}
+
+.page-icon {
+    font-size: 20px;
+    -webkit-text-stroke: 2px;
+}
+
+
+/* ------------------- MOBILE ---------------------- */
+
+@media only screen and (max-width: 480px){
+    .page-statement{
+        font-size:28px;
+    }
+
+    .page-heading{
+        font-size:20px;
+    }
+
+    .page-paragraph{
+        font-size:14px;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    .page-statement {
+        font-size: 40px;
+    }
+
+    .page-heading {
+        font-size: 28px;
+    }
+
+    .page-paragraph {
+        font-size: 20px;
+    }
+}

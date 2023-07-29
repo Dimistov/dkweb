@@ -1,0 +1,25 @@
+﻿@media only screen and (min-width:481px){
+    .footer-large {
+        display: flex;
+    }
+
+    .footer-small {
+        display: none;
+    }
+}
+
+@media only screen and (max-width:960px) {
+    .footer-small {
+        display: block;
+    }
+    
+    .footer-large {
+        display: none;
+    }
+
+    .footer-item{
+        width:100%;
+        text-align:center;
+        margin:10px 0px;
+    }
+}

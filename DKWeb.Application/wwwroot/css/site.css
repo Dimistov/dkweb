@@ -1,0 +1,52 @@
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+
+    /*font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;*/
+    font-family:'Arial Rounded MT';
+}
+
+/* MODIFICATIONS */
+img{
+    object-fit:cover;
+}
+
+.hr-main {
+    border-top: 2px solid var(--page-primary);
+    opacity:60%;
+}
+
+.hr-secondary {
+    border-top: 5px solid red;
+    z-index:4;
+    opacity: 60%;
+}
+
+a{
+    color: var(--page-secondary);
+}
+
+/* Custom colors */ 
+:root {
+    --page-primary: rgba(1, 74, 135, 1);
+    --page-secondary: rgba(60, 156, 215, 1);
+    --page-dark: rgba(33, 37, 41, 1);
+    --page-gray: #F4F4F5;
+}
